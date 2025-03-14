@@ -7,13 +7,38 @@
     </head>
     <body>
         <header  id="mainHeader">
-            <img src="" alt="Logo do site">
             <h1>Calculadora Científica</h1>
         </header>
         <main>
             <section id="calcBody">
                 <input id="calcInput">
                 <!-- Botões da calculadora -->
+                <div id="buttonList">
+                    <!--1 Linha-->
+                    <button class="btnNumbers" onclick="appendValue('7')">7</button>
+                    <button class="btnNumbers" onclick="appendValue('8')">8</button>
+                    <button class="btnNumbers" onclick="appendValue('9')">9</button>
+                    <button class="btnControls" onclick="clearDisplay()">C</button>
+                    <button class="btnControls" onclick="deleteLast()">⌦</button>
+                    <!--2 Linha-->
+                    <button class="btnNumbers" onclick="appendValue('4')">4</button>
+                    <button class="btnNumbers" onclick="appendValue('5')">5</button>
+                    <button class="btnNumbers" onclick="appendValue('6')">6</button>
+                    <button class="btnOperators" onclick="appendValue('+')">+</button>
+                    <button class="btnOperators" onclick="appendValue('-')">-</button>
+                    <!--3 Linha-->
+                    <button class="btnNumbers" onclick="appendValue('1')">1</button>
+                    <button class="btnNumbers" onclick="appendValue('2')">2</button>
+                    <button class="btnNumbers" onclick="appendValue('3')">3</button>
+                    <button class="btnOperators" onclick="appendValue('*')">x</button>
+                    <button class="btnOperators" onclick="appendValue('/')">/</button>
+                    <!--4 Linha-->
+                    <button class="btnNumbers" onclick="appendValue('0')">0</button>
+                    <button class="btnNumbers" onclick="appendValue('.')">,</button>
+                    <button class="btnControls" onclick="calculate()">=</button>
+                    <button class="btnOperators" onclick="appendValue('/100*')">%</button>
+                    <button class="btnOperators" onclick="appendValue('%')">Rest</button>
+                </div>
             </section>
         </main>
         <footer>
