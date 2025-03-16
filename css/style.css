@@ -1,61 +1,102 @@
 /*Mini reset de formatações*/
-*{
+* {
     font-size: 100%;
     font-style: normal;
     text-decoration: none;
     margin: 0;
     padding: 0;
+    font-family: "monocraft";
 }
 
-#calcBody{
+body {
+    background-image: linear-gradient(to bottom right, #b0f8a9, #085c00);
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Cabeçalho com o título da página*/
+#mainHeader {
+    margin: 3% auto;
+    width: 40vw;
+    display: flex;
+    gap: 2%;
+    justify-content: center;
+}
+
+#mainHeader h1 {
+    font-size: 2.3rem;
+    color: #003c0a;
+    text-shadow: #02e829 0 0 10px;
+}
+
+#calcBody {
     width: 60%;
     margin: 2% auto;
+    border: #000 2px solid;
+    box-shadow: #000 0 10px 30px 2px;
     background-color: #2e2e2e;
-    padding: 5%;
+    padding: 3% 2%;
+    border-radius: 30px;
+    display: flex; 
+    flex-flow: column nowrap;
+    justify-content: center;
 }
 
 /*Input e output de valores da calculadora*/
-#calcInput{
-    width: 60vw;
+#calcInput {
+    width: 50vw;
     height: 5vh;
-    text-align: center;
-    margin: 2% auto;
+    padding: 0 3%;
+    text-align: start;
+    margin: 0 auto;
+    border-radius: 10px;
 }
 
 /*Botões da calculadora*/
-#buttonList{
+#buttonList {
     font-family: Arial, Helvetica, sans-serif;
-    margin: 1rem 5rem;
+    margin: 2rem 5rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 0.5rem 0.7rem;
+    gap: 0.7rem 0.7rem;
 }
-#buttonList button{
+
+#buttonList button {
     border: 1px solid #000;
     border-radius: 10px;
     height: 6vh;
     cursor: pointer;
 }
-#buttonList button:hover{
+
+#buttonList button:hover {
     background-color: #67fc59;
     box-shadow: #27ff4b 0 0 15px 0.5px;
     color: #130000;
     font-weight: bold;
 }
-.btnNumbers{
+
+#buttonList sup{
+    font-size: 0.6rem;
+}
+
+.btnNumbers {
     font-size: 1.2rem;
     background-color: #ccc;
     color: #000;
 }
-.btnControls{
+
+.btnControls {
     background-color: #12d600;
     color: #000;
 }
-.btnOperators{
+
+.btnOperators {
     background-color: #035500;
     color: #fff;
 }
-.btnFunction{
-    background-color: var(--bg-function-list-button-color);
-    color: var(--text-function-list-button-color);
+
+.btnFunction {
+    background-color: #022d00;
+    color: #fff;
 }

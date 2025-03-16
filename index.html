@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <title>Calculadora Científica</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <header  id="mainHeader">
-            <h1>Calculadora Científica</h1>
-        </header>
-        <main>
-            <section id="calcBody">
-                <input id="calcInput">
-                <!-- Botões da calculadora -->
-                <div id="buttonList">
-                    <!--1 Linha-->
-                    <button class="btnNumbers" onclick="appendValue('7')">7</button>
-                    <button class="btnNumbers" onclick="appendValue('8')">8</button>
-                    <button class="btnNumbers" onclick="appendValue('9')">9</button>
-                    <button class="btnControls" onclick="clearDisplay()">C</button>
-                    <button class="btnControls" onclick="deleteLast()">⌦</button>
-                    <!--2 Linha-->
-                    <button class="btnNumbers" onclick="appendValue('4')">4</button>
-                    <button class="btnNumbers" onclick="appendValue('5')">5</button>
-                    <button class="btnNumbers" onclick="appendValue('6')">6</button>
-                    <button class="btnOperators" onclick="appendValue('+')">+</button>
-                    <button class="btnOperators" onclick="appendValue('-')">-</button>
-                    <!--3 Linha-->
-                    <button class="btnNumbers" onclick="appendValue('1')">1</button>
-                    <button class="btnNumbers" onclick="appendValue('2')">2</button>
-                    <button class="btnNumbers" onclick="appendValue('3')">3</button>
-                    <button class="btnOperators" onclick="appendValue('*')">x</button>
-                    <button class="btnOperators" onclick="appendValue('/')">/</button>
-                    <!--4 Linha-->
-                    <button class="btnNumbers" onclick="appendValue('0')">0</button>
-                    <button class="btnNumbers" onclick="appendValue('.')">,</button>
-                    <button class="btnControls" onclick="calculate()">=</button>
-                    <button class="btnOperators" onclick="appendValue('/100*')">%</button>
-                    <button class="btnOperators" onclick="appendValue('%')">Rest</button>
-                </div>
-            </section>
-        </main>
-        <footer>
 
-        </footer>
+<head>
+    <title>Calculadora Científica</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-        <script src="js/calcScript.js"></script>
-    </body>
+<body>
+    <header id="mainHeader">
+        <svg fill="#003c0a" height="40px" width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 486.309 486.309" xml:space="preserve" stroke="#003c0a"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M401.095,0H85.215C63.892,0,46.604,17.289,46.604,38.611v409.088c0,21.326,17.288,38.609,38.611,38.609h315.88 c21.323,0,38.609-17.283,38.609-38.609V38.611C439.705,17.289,422.418,0,401.095,0z M182.69,420.805 c0,4.717-3.815,8.533-8.533,8.533h-33.829c-4.71,0-8.525-3.816-8.525-8.533v-33.828c0-4.717,3.815-8.533,8.525-8.533h33.829 c4.718,0,8.533,3.816,8.533,8.533V420.805z M182.69,334.877c0,4.717-3.815,8.533-8.533,8.533h-33.829 c-4.71,0-8.525-3.816-8.525-8.533V301.08c0-4.719,3.815-8.533,8.525-8.533h33.829c4.718,0,8.533,3.814,8.533,8.533V334.877z M182.69,248.98c0,4.719-3.815,8.533-8.533,8.533h-33.829c-4.71,0-8.525-3.814-8.525-8.533v-33.813c0-4.719,3.815-8.531,8.525-8.531 h33.829c4.718,0,8.533,3.813,8.533,8.531V248.98z M268.601,420.805c0,4.717-3.814,8.533-8.532,8.533h-33.831 c-4.716,0-8.532-3.816-8.532-8.533v-33.828c0-4.717,3.816-8.533,8.532-8.533h33.831c4.718,0,8.532,3.816,8.532,8.533V420.805z M268.601,334.877c0,4.717-3.814,8.533-8.532,8.533h-33.831c-4.716,0-8.532-3.816-8.532-8.533V301.08 c0-4.719,3.816-8.533,8.532-8.533h33.831c4.718,0,8.532,3.814,8.532,8.533V334.877z M268.601,248.98 c0,4.719-3.814,8.533-8.532,8.533h-33.831c-4.716,0-8.532-3.814-8.532-8.533v-33.813c0-4.719,3.816-8.531,8.532-8.531h33.831 c4.718,0,8.532,3.813,8.532,8.531V248.98z M354.505,420.805c0,4.717-3.815,8.533-8.524,8.533h-33.83 c-4.717,0-8.532-3.816-8.532-8.533v-33.828c0-4.717,3.815-8.533,8.532-8.533h33.83c4.708,0,8.524,3.816,8.524,8.533V420.805z M354.505,334.877c0,4.717-3.815,8.533-8.524,8.533h-33.83c-4.717,0-8.532-3.816-8.532-8.533V301.08 c0-4.719,3.815-8.533,8.532-8.533h33.83c4.708,0,8.524,3.814,8.524,8.533V334.877z M354.505,248.98c0,4.719-3.815,8.533-8.524,8.533 h-33.83c-4.717,0-8.532-3.814-8.532-8.533v-33.813c0-4.719,3.815-8.531,8.532-8.531h33.83c4.708,0,8.524,3.813,8.524,8.531V248.98z M368.564,154.982c0,4.715-3.815,8.531-8.525,8.531H126.271c-4.711,0-8.526-3.816-8.526-8.531v-88.43 c0-4.717,3.815-8.531,8.526-8.531h233.767c4.71,0,8.525,3.814,8.525,8.531V154.982z"></path></g></svg>
+        <h1>Calculadora Científica</h1>
+    </header>
+    <main>
+        <section id="calcBody">
+            <input id="calcInput">
+            <!-- Botões da calculadora -->
+            <div id="buttonList">
+                <button class="btnFunction" onclick="appendValue('ş')">sin</button>
+                <button class="btnFunction" onclick="appendValue('ç')">cos</button>
+                <button class="btnFunction" onclick="appendValue('ţ')">tan</button>
+                <button class="btnFunction" onclick="appendValue('l')">log</button>
+                <button class="btnFunction" onclick="appendValue('ł')">ln</button>
+                <!-- Calc Cientifica -->
+                <button class="btnFunction" onclick="appendValue('ê')">x<sup>n</sup></button>
+                <button class="btnFunction" onclick="appendValue('3.141')">π</button>
+                <button class="btnFunction" onclick="appendValue('r')" style="letter-spacing: 3px;"><sup>n</sup>√x</button>
+                <button class="btnFunction" onclick="appendValue('(')">(</button>
+                <button class="btnFunction" onclick="appendValue(')')">)</button>
+                <!-- Daqui pra baixo é calculadora basica -->
+                <button class="btnNumbers" onclick="appendValue('7')">7</button>
+                <button class="btnNumbers" onclick="appendValue('8')">8</button>
+                <button class="btnNumbers" onclick="appendValue('9')">9</button>
+                <button class="btnControls" onclick="clearDisplay()">C</button>
+                <button class="btnControls" onclick="deleteLast()">⌦</button>
+                <!-- Calc Basica -->
+                <button class="btnNumbers" onclick="appendValue('4')">4</button>
+                <button class="btnNumbers" onclick="appendValue('5')">5</button>
+                <button class="btnNumbers" onclick="appendValue('6')">6</button>
+                <button class="btnOperators" onclick="appendValue('+')">+</button>
+                <button class="btnOperators" onclick="appendValue('-')">-</button>
+                <!-- Calc Basica -->
+                <button class="btnNumbers" onclick="appendValue('1')">1</button>
+                <button class="btnNumbers" onclick="appendValue('2')">2</button>
+                <button class="btnNumbers" onclick="appendValue('3')">3</button>
+                <button class="btnOperators" onclick="appendValue('*')">x</button>
+                <button class="btnOperators" onclick="appendValue('/')">/</button>
+                <!-- Calc Basica -->
+                <button class="btnNumbers" onclick="appendValue('0')">0</button>
+                <button class="btnNumbers" onclick="appendValue('.')">,</button>
+                <button class="btnControls" onclick="calculate()">=</button>
+                <button class="btnOperators" onclick="appendValue('%')">%</button>
+                <button class="btnOperators" onclick="appendValue('ř')">Rest</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+
+    <script src="js/calcScript.js"></script>
+</body>
+
 </html>
