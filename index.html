@@ -14,9 +14,10 @@
     </header>
     <main>
         <section id="calcBody">
-            <input id="calcInput">
+            <input type="text" name="calcInput" id="calcInput" autocomplete="off">
             <!-- Botões da calculadora -->
             <div id="buttonList">
+                <!-- Calc Cientifica -->
                 <button class="btnFunction" onclick="appendValue('ş')">sin</button>
                 <button class="btnFunction" onclick="appendValue('ç')">cos</button>
                 <button class="btnFunction" onclick="appendValue('ţ')">tan</button>
@@ -55,10 +56,6 @@
             </div>
         </section>
     </main>
-    <footer>
-
-    </footer>
-
     <script src="js/calcScript.js"></script>
 </body>
 
