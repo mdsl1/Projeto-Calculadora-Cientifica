@@ -29,7 +29,7 @@ function calculate() {
     expression = resolveParentheses(expression);
     
     // Resolve operações na ordem
-    expression = resolveOperations(expression, ['ê', 'r', 'ş', 'ç', 'ţ', 'l', 'ł']);
+    expression = resolveOperations(expression, ['!', 'ê', 'r', 'ş', 'ç', 'ţ', 'l', 'ł']);
     expression = resolveOperations(expression, ['*', '/', '%', 'ř']);
     expression = resolveOperations(expression, ['+', '-']);
     
@@ -41,7 +41,7 @@ function resolveParentheses(expression) {
     const regex = /\(([^()]+)\)/;
     while (regex.test(expression)) {
         expression = expression.replace(regex, (match, subExpr) => {
-            return resolveOperations(subExpr, ['ê', 'r', 'ş', 'ç', 'ţ', 'l', 'ł', '*', '/', '%', 'ř','+', '-']);
+            return resolveOperations(subExpr, ['!', 'ê', 'r', 'ş', 'ç', 'ţ', 'l', 'ł', '*', '/', '%', 'ř','+', '-']);
         });
     }
     return expression;
@@ -49,7 +49,7 @@ function resolveParentheses(expression) {
 
 function resolveOperations(expression, operators) {
     
-    expression = expression.replace(/(-?\d+(\.\d+)?)\s*([%şçţł])/g, (match, n1, _, operator) => {
+    expression = expression.replace(/(-?\d+(\.\d+)?)\s*([%şçţł!])/g, (match, n1, _, operator) => {
         let result;
         switch (operator) {
             // Porcentagem
@@ -67,6 +67,21 @@ function resolveOperations(expression, operators) {
             // Logaritmo natural
             case 'ł': result = Math.log(parseFloat(n1)); break;
             
+            case "!":
+                if(parseFloat(n1) <= 1 || !Number.isInteger(parseFloat(n1))) {
+                    result = 1;
+                    console.log("Número inválido, permitido apenas valores inteiros.");
+                }
+                else {
+                    let n = 1;
+                    for(let i=0; i<n1; i++) {
+                        n *= n1-i;
+                    }
+
+                    result = n;
+                }
+            break;
+
             // Caso inesperado (não deveria ocorrer)
             default: result = n1; 
         }
