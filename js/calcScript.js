@@ -85,49 +85,63 @@ function resolveOperations(expression, operators) {
             // Caso inesperado (não deveria ocorrer)
             default: result = n1; 
         }
+
         return result;
     });
 
-
-
+    // Regex para encontrar operações binárias (com dois operandos)
     const regex = new RegExp(`(-?\\d+(\\.\\d+)?)\\s*([${operators.join('')}])\\s*(-?\\d+(\\.\\d+)?)`);
+
     while (regex.test(expression)) {
-        
         expression = expression.replace(regex, (match, n1, _, operator, n2) => {
-            
-            switch (operator) {
-                // Multiplicação
-                case '*': result = parseFloat(n1) * parseFloat(n2); break;
+            let result;
+            let num1 = parseFloat(n1);
+            let num2 = parseFloat(n2);
 
-                // Divisão
-                case '/': result = parseFloat(n1) / parseFloat(n2); break;
-
-                // Adição
-                case '+': result = parseFloat(n1) + parseFloat(n2); break;
-
-                // Subtração
-                case '-': result = parseFloat(n1) - parseFloat(n2); break;
-
-                // Raiz Enésima
-                case 'r': result = Math.pow((parseFloat(n2)), (1/parseFloat(n1))); break;
-
-                // Potenciação
-                case 'ê': result = Math.pow(parseFloat(n1), parseFloat(n2)); break;
-
-                // Resto de Divisão
-                case 'ř': result = parseFloat(n1) % parseFloat(n2); break;
-                
-                // Logaritmo
-                case 'l': result = (n2 > 0 && n2 !== 1) ? (Math.log(parseFloat(n1)) / Math.log(parseFloat(n2))) : "Erro"; break;
-
-                // Caso de algum erro
-                default: result = "erro"; 
+            // Multiplicação
+            if (operator === '*') {
+                result = num1 * num2;
+            } 
+            // Divisão
+            else if (operator === '/') {
+                result = num1 / num2; 
             }
+            // Adição
+            else if (operator === '+') {
+                result = num1 + num2;
+            } 
+            // Subtração
+            else if (operator === '-') {
+                result = num1 - num2;
+            }
+            // Raiz Enésima
+            else if (operator === 'r') {
+                result = Math.pow(num2, 1 / num1);
+            } 
+            // Potência
+            else if (operator === 'ê') {
+                result = Math.pow(num1, num2); // Potência
+            } 
+            // Resto de divisão
+            else if (operator === 'ř') {
+                result = num1 % num2;
+            } 
+            // Logaritmo de n1 na base n2
+            else if (operator === 'l') {
+                result = (num2 > 0 && num2 !== 1) ? (Math.log(num1) / Math.log(num2)) : "Erro";
+            } 
+            // Caso inesperado
+            else {
+                result = "erro";
+            }
+
             return result;
         });
     }
+
     return expression;
 }
+
 
 // Eventlisteners para identificar quais teclas estão sendo clicadas e quais funções elas precisam chamar
 document.addEventListener("keydown", function(event) {
